@@ -1,2 +1,3 @@
 # Python_Programs
-Python programs, written just for fun
+This repository is for programs I wrote while learning Pyhton. 
+
