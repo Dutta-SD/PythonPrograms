@@ -1,3 +1,3 @@
 # Python_Programs
-This repository is for programs I wrote while learning Pyhton. 
+Repository is for Writing practice Pyhton Code
 
