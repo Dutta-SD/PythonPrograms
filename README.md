@@ -1,3 +1,3 @@
 # Python_Programs
-Repository is for Writing practice Python Code
-
+This repository is for Python Code written.
+All code was written in spyder ide and run using python interpreter 3.7.3
