@@ -1,14 +1,13 @@
-# Python_Programs
-Sandip Dutta
+# Python Programs
+Practice programs written in Python 3.7
 
-This Repo Stores code for Python Program Practice.
+## How to use:
+-----
+These contains practice code. If you want to try to run them in your own local machine:
+* Install `python 3.7.3`.
+    * Goto Python website for installation process. 
 
-Language : Python 3.7.3
-# Python_OOP
-Object Oriented Code Program in Python
-
-This repository stores programs written using OOP concepts
-
-### Programs List:
-1) Game of Life: Implements Conways Game of Life, use app.py to launch
+* Then run the programs using
+    * `python <filename.py>` or
+    * `python3 <filename.py>`
 
