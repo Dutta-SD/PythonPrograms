@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Apr  6 17:46:19 2020
-
-@author: sandip
-"""
 
 # =============================================================================
 # Sieve of Eratosthenes : To find all primes using sieve of Eratosthenes
