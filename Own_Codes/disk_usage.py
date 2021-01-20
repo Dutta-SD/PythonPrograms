@@ -11,6 +11,7 @@ blue_bg = u"\u001b[44;1m" # Blue
 green_bg = u"\u001b[42;1m" # Green
 red_bg = u"\u001b[41;1m" # red
 reset = u"\u001b[0m" # make output non sticky
+MAX_LENGTH = int(os.get_terminal_size().columns * 0.25)
 #---------------------------------------------
 
 # Get disk usage analysis
@@ -18,7 +19,7 @@ total_space, used_space, free_space =  shutil.disk_usage(os.getcwd())
 
 def get_length(space, total_space = total_space):
     # Gives value of length of data
-    percent = (space / total_space) * 100.0
+    percent = (space / total_space) * MAX_LENGTH
     return int(percent)
 
 
