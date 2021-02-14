@@ -11,6 +11,7 @@ blue_bg = u"\u001b[44;1m" # Blue
 green_bg = u"\u001b[42;1m" # Green
 red_bg = u"\u001b[41;1m" # red
 reset = u"\u001b[0m" # make output non sticky
+MAX_LENGTH = int(os.get_terminal_size().columns * 0.25)
 #---------------------------------------------
 
 # Get disk usage analysis
@@ -18,7 +19,7 @@ total_space, used_space, free_space =  shutil.disk_usage(os.getcwd())
 
 def get_length(space, total_space = total_space):
     # Gives value of length of data
-    percent = (space / total_space) * 100.0
+    percent = (space / total_space) * MAX_LENGTH
     return int(percent)
 
 
@@ -41,9 +42,10 @@ def get_value_bar(space_value, space_len, bgcolor, space_name, reset = reset):
     output_string = f"{space_name}\t{space_val_gb} GB\t{bgcolor} {left_len} {reset}"
     return output_string
 
-print()
-print(f"Space analysis for {os.getcwd()}")
-print()
+print('-'*MAX_LENGTH)
+print(f"Space analysis Report")
+print('-'*MAX_LENGTH)
+print(f'Utility called from {os.getcwd()}')
 print(get_value_bar(total_space, total_space_len, blue_bg, "Total Space"))
 print(get_value_bar(used_space, used_space_len, red_bg, "Used Space"))
 print(get_value_bar(free_space, free_space_len, green_bg, "Free Space"))
