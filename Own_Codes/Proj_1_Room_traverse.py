@@ -32,15 +32,15 @@ description = {
 def RoomNumber(n):
     if n==1:
         return 'A'
-    elif n==2:
+    if n==2:
         return 'B'
-    elif n==3:
+    if n==3:
         return 'C'
-    elif n==4:
+    if n==4:
         return 'D'
-    elif n==5:
+    if n==5:
         return 'E'
-    elif n==6:
+    if n==6:
         return 'F'
 
 #Room Desc gives the description o the room you are in

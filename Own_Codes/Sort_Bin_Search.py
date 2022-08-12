@@ -57,10 +57,9 @@ def BinSearch(val, start, end, value):
     
     if value == val[mid]:
         return mid
-    elif value > val[mid]:
+    if value > val[mid]:
         return BinSearch(val, mid+1, end, value)
-    else:
-        return BinSearch(val, start, mid - 1, value)
+    return BinSearch(val, start, mid - 1, value)
     
     
 print(BinSearch(val, 0, 999, -1000))

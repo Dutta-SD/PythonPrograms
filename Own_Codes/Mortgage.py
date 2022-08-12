@@ -27,11 +27,11 @@ class Mortgage:
     def repayment_mode(mode):
         if mode == 'm':
             return 12
-        elif mode == 'q':
+        if mode == 'q':
             return 4
-        elif mode == 'h':
+        if mode == 'h':
             return 2
-        elif mode == 'y':
+        if mode == 'y':
             return 1       
     
     def showMonthlyPayment(self):
@@ -56,10 +56,3 @@ principle, mode, rate, years = float(values[0]), values[1], float(values[2]), in
 CalcMortgage = Mortgage(principle, mode, rate, years)
 
 CalcMortgage.showMonthlyPayment()
-
-            
-        
-        
-
-            
-        
