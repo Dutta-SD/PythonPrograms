@@ -172,22 +172,20 @@ class AVL_Tree(object):
             # restored. 
             if value < rootNode.left.value:
                 return self.rightRotate(rootNode)
-            else:
-                # Left skewed tree after insertion
-                # but value is greater than value of rootNode
-                # Thus, value is the left node of the tree
-                # After rotation, update parent node with 
-                # new left node.
-                rootNode.left = self.leftRotate(root.left)
-                return self.rightRotate(root)
+            # Left skewed tree after insertion
+            # but value is greater than value of rootNode
+            # Thus, value is the left node of the tree
+            # After rotation, update parent node with 
+            # new left node.
+            rootNode.left = self.leftRotate(root.left)
+            return self.rightRotate(root)
 
         if balanceFactor < -1:
             if value > rootNode.right.value:
                 # Adjust right sub tree
                 return self.leftRotate(rootNode)
-            else:
-                # Update parent node
-                rootNode.right = self.rightRotate(root.right)
-                return self.leftRotate(rootNode)
+            # Update parent node
+            rootNode.right = self.rightRotate(root.right)
+            return self.leftRotate(rootNode)
 
         return rootNode

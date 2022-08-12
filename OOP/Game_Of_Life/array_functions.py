@@ -53,8 +53,7 @@ class _ArrayIterator(object):
             entry = self._arrayRef[self._curr_index]
             self._curr_index += 1
             return entry
-        else:
-            raise StopIteration
+        raise StopIteration
 
 
 # Class for implementing 2D array data structure
