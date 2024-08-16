@@ -7,14 +7,17 @@ __author__ : Sandip Dutta
 Note : Some error occuring due to help function
 formatting issues
 '''
-#------------ Dependencies--------------
-import click  
 ### Required dependency, install via
 ### pip install click
 import os
-from datetime import datetime
 import sys
-#---------------------------------------
+from datetime import datetime
+
+# ------------ Dependencies--------------
+import click
+
+
+# ---------------------------------------
 
 
 ## Main init function of todo cli
@@ -27,9 +30,9 @@ def todo_cli():
 
 
 ## Add function - adds the task to todo list
-@todo_cli.command('add', help ="$ add 'todo item' # Add a new todo")
-@click.argument('todo_item', type = str, required = False)
-def add(todo_item : str=None):
+@todo_cli.command('add', help="$ add 'todo item' # Add a new todo")
+@click.argument('todo_item', type=str, required=False)
+def add(todo_item: str = None):
     # adds todo item to file (todo.txt) where we store 
     # tasks to be done
 
@@ -42,7 +45,7 @@ def add(todo_item : str=None):
 
 
 ## ls - Shows all the tasks remaining
-@todo_cli.command('ls', help = "$ ls # Show remaining todos")
+@todo_cli.command('ls', help="$ ls # Show remaining todos")
 def ls():
     # reports work done or not
     with open('todo.txt', 'r') as todoDataFile:
@@ -62,11 +65,11 @@ def ls():
 
 # delete
 @todo_cli.command('del', help='$ del NUMBER  # Delete a todo')
-@click.argument('task_number', type=int, required = False)
-def delete(task_number : int):
+@click.argument('task_number', type=int, required=False)
+def delete(task_number: int):
     # deletes a task
     # if not found, then raise error
-    
+
     if task_number == None:
         click.echo(f'Error: Missing NUMBER for deleting todo.')
         sys.exit(0)
@@ -79,21 +82,22 @@ def delete(task_number : int):
             errorMessage = f"Error: todo #{task_number} does not exist. Nothing deleted."
             click.echo(errorMessage)
             sys.exit(0)
-            
+
         # valid, so remove item, clear file, write tasks again
         task = todoTasks[task_number - 1]
         todoTasks.remove(task)
-        todoDataFile.truncate(0)     
+        todoDataFile.truncate(0)
         todoDataFile.writelines(todoTasks)
         click.echo(f'Deleted todo #{task_number}')
 
-@todo_cli.command('done', help = '$ done NUMBER # Mark task as Done')
-@click.argument('task_number', type=int, required = False)
+
+@todo_cli.command('done', help='$ done NUMBER # Mark task as Done')
+@click.argument('task_number', type=int, required=False)
 def done(task_number):
     # marks task as done
     # if not found, then raise error
     task = None  ## task to be deleted
-    
+
     if task_number == None:
         click.echo(f'Error: Missing NUMBER for marking todo as done.')
         sys.exit(0)
@@ -109,17 +113,18 @@ def done(task_number):
         # valid, so remove item, clear file, write tasks again
         task = todoTasks[task_number - 1]
         todoTasks.remove(task)
-        todoDataFile.truncate(0)     
+        todoDataFile.truncate(0)
         todoDataFile.writelines(todoTasks)
 
     with open('done.txt', 'a') as doneTasks:
         # Current utc time
-        task_complete_date = datetime.utcnow().strftime("%Y-%m-%d") 
+        task_complete_date = datetime.utcnow().strftime("%Y-%m-%d")
         ## Write task in final format
         doneTasks.write(f"x {task_complete_date} {task}")
         click.echo(f"Marked todo #{task_number} as done.")
 
-@todo_cli.command('report', help = '$ report # Statistics')
+
+@todo_cli.command('report', help='$ report # Statistics')
 def report():
     ## Gives statistics for tasks
     pendingTasksData = open('todo.txt')
@@ -129,11 +134,12 @@ def report():
     numCompletedTasks = len(completedTasksData.readlines())
 
     dateNow = datetime.utcnow().strftime("%Y-%m-%d")
-    
-    tasksStatsToDisplay = f"{dateNow} Pending : {numPendingTasks} Completed : {numCompletedTasks}"
-    click.echo(tasksStatsToDisplay)    
 
-@todo_cli.command('help', help = "$ help # Show usage")
+    tasksStatsToDisplay = f"{dateNow} Pending : {numPendingTasks} Completed : {numCompletedTasks}"
+    click.echo(tasksStatsToDisplay)
+
+
+@todo_cli.command('help', help="$ help # Show usage")
 def give_help():
     # Shows help message
     help_text = '''Usage :-
@@ -147,7 +153,7 @@ def give_help():
 
 
 if __name__ == '__main__':
-    os.chdir('.') # change to current dir
+    os.chdir('.')  # change to current dir
     ## Make necessary files
     todo_file = 'todo.txt'
     done_file = 'done.txt'

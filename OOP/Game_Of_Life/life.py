@@ -1,5 +1,6 @@
 from array_functions import Array2D
 
+
 # Class for Game of life
 
 class LifeGrid:
@@ -11,13 +12,14 @@ class LifeGrid:
     alive = 1
     # Directions in which the neighbors can be
     _neighbour_directions = (
-    (0, 1), (1, 0), (1, 1), (0, -1),
-    (-1, 0), (-1, -1), (1, -1), (-1, 1)
+        (0, 1), (1, 0), (1, 1), (0, -1),
+        (-1, 0), (-1, -1), (1, -1), (-1, 1)
     )
+
     # Initialise a grid, set all cells to dead
     def __init__(self, nrows, ncols):
         self.game_grid = Array2D(nrows, ncols)
-        self.game_grid.clear( self.dead )
+        self.game_grid.clear(self.dead)
 
     # Returns the number of rows of Grid
     def numRows(self):
@@ -37,11 +39,11 @@ class LifeGrid:
     def clearcell(self, row, col):
         self.game_grid[row, col] = self.dead
 
-    #function to make a cell alive
+    # function to make a cell alive
     def setCell(self, row, col):
         self.game_grid[row, col] = self.alive
 
-    #isLiveCell check whether cell is alive or not
+    # isLiveCell check whether cell is alive or not
     def isLiveCell(self, row, col):
         return self.game_grid[row, col] == self.alive
 

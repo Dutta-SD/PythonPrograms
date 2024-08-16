@@ -12,7 +12,7 @@ Created on Mon Apr  6 15:24:32 2020
 
 n = int(input("Enter a number: "))
 count = 0
-while(n != 1):
+while (n != 1):
     if n & 1:
         n = 3 * n + 1
         count += 1
@@ -21,5 +21,3 @@ while(n != 1):
         count += 1
 
 print(count)
-
-        

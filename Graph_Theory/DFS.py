@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 
-#----------------------------------------------------------------
+# ----------------------------------------------------------------
 # Python Program to implement Depth First Search
 # Depth First Search is a very Simple Algorithm to traverse
 # the graph
-#----------------------------------------------------------------
+# ----------------------------------------------------------------
 
-#n : number of connected nodes in the graph
+# n : number of connected nodes in the graph
 n = 5
 # g is the adjacency list
 # It is going to be a list of lists
@@ -22,28 +22,29 @@ g = [[1, 4],
 
 # visited marks if each index is visited or not
 # index of one element marked means we have visited it
-visited = [False]*n 
+visited = [False] * n
+
 
 # DFS function:
 # Base Case: If we have visited a node, return
 # Normal case, get one node and dfs on it
 
 
-def DFS(at_):    #at_: specifies 'at' which node we are on
+def DFS(at_):  # at_: specifies 'at' which node we are on
     # Base Case: if we have visited a node, return, we have no work here
     if visited[at_]:
-        print(f"Came at_{at_}. Lets Go Back") 
+        print(f"Came at_{at_}. Lets Go Back")
         return
     # If we have not visited the node, mark the node as visited first
     visited[at_] = True
-    
+
     # Print the node we have visited
-    print(f"At_node_{at_}")    
-    
+    print(f"At_node_{at_}")
+
     # Now we extract the node one by one, and do DFS in each
     for next_node in g[at_]:
         DFS(next_node)
-        
+
 
 start_node = 0
 DFS(start_node)

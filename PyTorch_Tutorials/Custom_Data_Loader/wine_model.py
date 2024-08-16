@@ -1,7 +1,9 @@
-from wine_data_loader import dataloader
 import torch
 import torch.nn as nn
 import torch.optim as optim
+
+from wine_data_loader import dataloader
+
 
 ## Wine model
 class NN(nn.Module):
@@ -14,7 +16,7 @@ class NN(nn.Module):
         ## define your layers here
         ## Layers are linear, conv2d etc. For activations, use forward
         self.fc1 = nn.Linear(in_features=input_size, out_features=50)
-        self.activation1 = nn.ReLU() ## Relu is in nn only
+        self.activation1 = nn.ReLU()  ## Relu is in nn only
         self.fc2 = nn.Linear(in_features=50, out_features=num_classes)
 
     def forward(self, x):
@@ -76,6 +78,5 @@ for epoch in range(num_epochs):
         optimizer.step()
 
     print(f"({epoch}) : Cross Entropy Loss = {loss.detach()}")
-
 
 # Too much loss due to imbalance

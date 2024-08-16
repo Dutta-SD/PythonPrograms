@@ -11,11 +11,10 @@ then replace the API_KEY variable below.
     100 free API requests per month
 """
 
-from typing import List, Tuple
-import urllib.request
-import urllib.error
 import json
-
+import urllib.error
+import urllib.request
+from typing import List, Tuple
 
 URL_CLASSIFIER_API_BASE: str = (
     "https://website-categorization.whoisxmlapi.com/api/v2"

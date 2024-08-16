@@ -14,7 +14,7 @@ Created on Sat Jun 27 20:06:59 2020
 # Idea: Start DFS at every node
 # If already visited, do not visit
 
-#n : number of connected nodes in the graph
+# n : number of connected nodes in the graph
 n = 5
 # g is the adjacency list
 # It is going to be a list of lists
@@ -28,19 +28,20 @@ g = [[1],
 
 # visited marks if each index is visited or not
 # index of one element marked means we have visited it
-visited = [False]*n 
+visited = [False] * n
 
 # count: counts the number of connected compononts
 # also can think as number of clusters
 count = 0
 
 # Components: stores count of components for particular node
-components = [0]*n
+components = [0] * n
+
 
 # DFS function:
 # Normal case, get one node and dfs on it
 
-def DFS(at_):    #at_: specifies 'at' which node we are on
+def DFS(at_):  # at_: specifies 'at' which node we are on
     # If we have not visited the node, mark the node as visited first
     visited[at_] = True
     # Put the cluster number to that element. 
@@ -51,13 +52,13 @@ def DFS(at_):    #at_: specifies 'at' which node we are on
         if not visited[next_node]:
             # since we do dfs on only unvisited nodes, so we need no base case here
             DFS(next_node)
-            
 
-def findComponents(): # finds the number of components
+
+def findComponents():  # finds the number of components
     # Do DFS for each node to determine components
     # Only visit that node which is not visited yet
     global count
-    #Traverse all nodes, we need to do dfs in all nodes.
+    # Traverse all nodes, we need to do dfs in all nodes.
     for node in range(n):
         # If unvisited node, then do dfs.
         # unvisited nodes 2 types: first node and other cluster node
@@ -66,15 +67,10 @@ def findComponents(): # finds the number of components
             # if first node, we give it 1, else if other cluster count increases by 1
             count += 1
             # Operate dfs on the node that is not labelled/colored/marked/
-            #not part of that cluster
+            # not part of that cluster
             DFS(node)
 
 
 findComponents()
-    
+
 print(f"count {count}, components {components}")
-
-            
-            
-
-            

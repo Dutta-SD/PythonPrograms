@@ -31,12 +31,13 @@ g = [[1, 4],
 # visited or not. <size = n>
 visited = [False] * n
 
+
 # solve: Applies BFS to get shortest path
 def solve(s):
     # Define a QUEUE Of size n
     q = Queue(n)
     q.put(s)
-    
+
     # mark the fact that we have visited the node
     visited[s] = True
     # prev , help shortest path
@@ -45,12 +46,12 @@ def solve(s):
     # the list later
     prev = [-1] * n
 
-    #get neighbors of the current node
+    # get neighbors of the current node
     while not q.empty():
         node = q.get()
         # get neighbors of this node
         neighbors = g[node]
-        
+
         for next in neighbors:
             if not visited[next]:
                 # If unvisited neighbour, put in queue
@@ -61,39 +62,33 @@ def solve(s):
                 prev[next] = node
     return prev
 
-# reconstructPath(s, e, prev): 
+
+# reconstructPath(s, e, prev):
 def reconstructPath(s, e, prev):
     path = []
     at = e
     while at != -1:
         path.append(at)
         at = prev[at]
-        
+
     path.reverse()
-    
+
     if path[0] == s:
         return path
     return []
 
-# BFS function is divided into two parts. 
+
+# BFS function is divided into two parts.
 # solve : executes BFS on start node
 # reconstructPath: constructs the path from end to beginning
 def BFS(s, e):
     # Do BFS on s
     prev = solve(s)
-    
+
     # method for reconstructing path    
     return reconstructPath(s, e, prev)
-
 
 
 path = BFS(0, 2)
 
 print("path is {}".format(path))
-
-
-
-
-
-
-

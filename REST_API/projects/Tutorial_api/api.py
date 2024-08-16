@@ -1,9 +1,11 @@
+import sqlite3
+
 import flask
 from flask import request, jsonify
-import sqlite3
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
+
 
 def dict_factory(cursor, row):
     d = {}
@@ -26,7 +28,6 @@ def api_all():
     all_books = cur.execute('SELECT * FROM books;').fetchall()
 
     return jsonify(all_books)
-
 
 
 @app.errorhandler(404)
@@ -68,5 +69,6 @@ def api_filter():
     results = cur.execute(query, to_filter).fetchall()
 
     return jsonify(results)
+
 
 app.run()

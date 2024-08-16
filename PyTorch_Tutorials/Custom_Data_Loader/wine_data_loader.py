@@ -1,8 +1,9 @@
 # Implementation of Custom Data Loader
 # From Youtube, Python Engineer
+import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
-import numpy as np
+
 
 ### Custom Data Loader
 class WineDataset(Dataset):
@@ -13,11 +14,11 @@ class WineDataset(Dataset):
         # Load in separate file, then keep only x and y
         # portions in selfP
         xy = np.loadtxt(
-            './wine.csv', 
-            delimiter = ",", 
+            './wine.csv',
+            delimiter=",",
             skiprows=1)
-        self.x = torch.from_numpy(xy[:, : -1]) # Last column is the target
-        self.y = torch.tensor(xy[:, -1]) ## All the other columns
+        self.x = torch.from_numpy(xy[:, : -1])  # Last column is the target
+        self.y = torch.tensor(xy[:, -1])  ## All the other columns
         self.n_samples = xy.shape[0]
         print(self.x.dtype, self.y.dtype)
 
@@ -29,6 +30,7 @@ class WineDataset(Dataset):
         # len(dataset)
         return self.n_samples
 
+
 ##### YAYYYYY!!!!!!!!!!!!!!!111 It is working
 # Now we need to implement Data Loader
 ### Dataset - one sample
@@ -36,8 +38,8 @@ class WineDataset(Dataset):
 #  once with 4 random samples
 _dataset = WineDataset()
 dataloader = DataLoader(
-    dataset = _dataset, 
-    batch_size=4, 
+    dataset=_dataset,
+    batch_size=4,
     shuffle=True,
     num_workers=2,
 )

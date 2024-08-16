@@ -1,9 +1,11 @@
 import unittest
+
 from url_classify import (
     get_prediction_for_url,
     URL_CLASSIFIER_API_BASE,
     URL_CLASSIFIER_API_KEY,
 )
+
 
 class TestURLClassifier(unittest.TestCase):
     """

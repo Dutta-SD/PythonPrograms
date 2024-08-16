@@ -5,7 +5,6 @@
 ''' Few tests, Linear Regression, and Distributions explored here,
 along with proper explanations'''
 
-
 '''
 1. Shapiro-Wilk test: This test is useful for testing if a data sample
 has a Gaussian Distribution or not.
@@ -26,26 +25,24 @@ if p_value > 0.05:
 else:
     print('Unlikely to be Gaussain')
 
-
 '''
 2. Pearson Correlation Coefficient: Checks whether two data samples have
 linear correlation or not. 
 '''
 from scipy.stats import pearsonr
 
-samples_2 = numpy.array([ 0.991, 3.150, 0.212,
-                          -0.799, -0.055, -1.002,
-                          0.443, -1.0, -1.44, -2.21])
-    
-#Testing if p_value is signnificant or not
+samples_2 = numpy.array([0.991, 3.150, 0.212,
+                         -0.799, -0.055, -1.002,
+                         0.443, -1.0, -1.44, -2.21])
+
+# Testing if p_value is signnificant or not
 corr_coef, p_value = pearsonr(samples, samples_2)
 
 if p_value > 0.05:
     print('Likely to be linearly correleated')
 else:
     print('Unlikely to be correlated')
-    
-    
+
 '''
 3.  Spearman rank correlation: Checks if two samples have monotonic
 relationship or not'''
@@ -57,10 +54,3 @@ if p_value > 0.05:
     print('Likely to be correlated via spearman test')
 else:
     print('Unlikely to be correlated')
-    
-
-
-    
-    
-
-

@@ -14,6 +14,7 @@ If Z[i] matches the length of the pattern, we have found
 the pattern.
 '''
 
+
 def get_Z_arr(pattern, text):
     ''' Implements the Z-algorithm
     @ Args:
@@ -28,12 +29,12 @@ def get_Z_arr(pattern, text):
     # tempString[L,..., R] is a substring which is a prefix
 
     # $ is a special character for separating pattern from string
-    tempString = pattern + "$" + text 
+    tempString = pattern + "$" + text
     totalLength = len(tempString)
 
-    Z = [None] * totalLength # Z array
+    Z = [None] * totalLength  # Z array
 
-    for i in range(1, totalLength):    # Fill each element of Z Array
+    for i in range(1, totalLength):  # Fill each element of Z Array
         # If i is beyond R
         # use normal way to compute the Z[i]
         if i > R:
@@ -53,7 +54,7 @@ def get_Z_arr(pattern, text):
         #  is a prefix substring
         else:
             # Get k value
-            k = i -  L
+            k = i - L
             # Check if i + Z[k] exceeds the string
             # if does not, fill normally with previous
             # computed values
@@ -74,18 +75,20 @@ def get_Z_arr(pattern, text):
     # print(Z)
     return Z
 
+
 def ZSearch(text, pattern):
     ''' Searches for pattern using Z Algorithm'''
     lenPattern = len(pattern)
-    Z = get_Z_arr(pattern, text) # Get the Z array
+    Z = get_Z_arr(pattern, text)  # Get the Z array
 
-    patternPositions = [] # Positions where pattern is found
+    patternPositions = []  # Positions where pattern is found
 
     for element in range(len(Z)):
         if Z[element] == lenPattern:
             patternPositions.append(element - lenPattern - 1)
 
     return patternPositions
+
 
 def main():
     '''Driver Code'''
@@ -96,6 +99,7 @@ def main():
         print(f"Pattern found at indices {positions}")
     else:
         print("! Pattern not found")
+
 
 if __name__ == '__main__':
     main()

@@ -9,38 +9,39 @@ Created on Mon Jun 29 20:32:56 2020
 # DFS on tree, 
 # Problem,  sum of all leaf nodes
 
-#number of nodes of tree
+# number of nodes of tree
 n = 10
 
 '''we take starting node to be 0th node'''
 ''' tree is a directed graph in CSE.'''
-tree = [[1, 2],#0
-        [3, 5],#1
-        [7, 8],#2
-        [4],#3
-        [],#4
-        [6],#5
-        [],#6
-        [],#7
-        [9],#8
-        []]#9
+tree = [[1, 2],  # 0
+        [3, 5],  # 1
+        [7, 8],  # 2
+        [4],  # 3
+        [],  # 4
+        [6],  # 5
+        [],  # 6
+        [],  # 7
+        [9],  # 8
+        []]  # 9
 
-#Records if visited or not
+# Records if visited or not
 visited = [False] * n
 
 
 def isLeafNode(neighbour):
     '''checks if leaf node or not'''
-    #[] evaluates to False
+    # [] evaluates to False
     # if tree[neighbour] is [], return True
     return not tree[neighbour]
+
 
 def sum_of_leaf_nodes():
     '''sum of leaf nodes calculated'''
     # Empty tree
     if tree == None:
         return 0
-    
+
     # Set 0 as visited
     visited[0] = True
     # total of all leaf nodes
@@ -58,8 +59,11 @@ def sum_of_leaf_nodes():
                     total += neighbour
     # Return the total                
     return total
+
+
 # Print the sum  of the root nodesz
 print("sum is {}".format(sum_of_leaf_nodes()))
+
 
 # =============================================================================
 # Make sure to turn visited to all False values as we will be reusing that 
@@ -71,26 +75,25 @@ def sum_of_leaf_nodes_R(node):
     # Empty tree
     if tree == None:
         return 0
-    
+
     total = 0
     # Set 0 as visited
     visited[node] = True
 
     # If leaf node, return the value of the node
     if isLeafNode(node):
-        return node        
-    
-    # checks for all neighbours
+        return node
+
+        # checks for all neighbours
     for neighbour in tree[node]:
         # If unvisited neighbours, visit
         if not visited[neighbour]:
             # Add leaf node sum to total
             total += sum_of_leaf_nodes_R(neighbour)
-        
+
     # Return the total                
     return total
 
+
 # Print the sum  of the root nodesz
 print("sum is {}".format(sum_of_leaf_nodes_R(0)))
-
-    

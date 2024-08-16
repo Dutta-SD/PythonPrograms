@@ -2,8 +2,10 @@
 
 import ctypes
 
+
 class Array:
     """ Array class implements 1D array in Python"""
+
     def __init__(self, size):
         assert size > 0, "Array size must be greater than 0"
         self._size = size
@@ -22,7 +24,7 @@ class Array:
 
     # Puts the value of the array in that position
     def __setitem__(self, index, value):
-        assert index >=0 and index < len(self), "Array subscript out of range"
+        assert index >= 0 and index < len(self), "Array subscript out of range"
         self._elements[index] = value
 
     # returns arrays iterator,  traverse the _elements
@@ -33,8 +35,6 @@ class Array:
     # Returns iterator for the array
     def __iter__(self):
         return _ArrayIterator(self._elements)
-
-
 
 
 # Class for iterator of the array
@@ -78,7 +78,7 @@ class Array2D:
         return len(self._theRows[0])
 
     # Sets the array to an inital value
-    def clear(self, value = None):
+    def clear(self, value=None):
         for row in range(self.numRows()):
             self._theRows[row].clear(value)
 
@@ -88,9 +88,9 @@ class Array2D:
         row = indexTuple[0]
         column = indexTuple[1]
 
-        assert row >= 0 and row < self.numRows()\
-        and column >=0 and column < self.numCols(),\
-        "Array subscript out of range"
+        assert row >= 0 and row < self.numRows() \
+               and column >= 0 and column < self.numCols(), \
+            "Array subscript out of range"
 
         return self._theRows[row][column]
 
@@ -100,8 +100,8 @@ class Array2D:
         row = indexTuple[0]
         column = indexTuple[1]
 
-        assert row >= 0 and row < self.numRows()\
-        and column >=0 and column < self.numCols(),\
-        "Array subscript out of range"
+        assert row >= 0 and row < self.numRows() \
+               and column >= 0 and column < self.numCols(), \
+            "Array subscript out of range"
 
         self._theRows[row][column] = value

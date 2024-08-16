@@ -36,15 +36,16 @@ $ How to maintain balance
 AVL achieve balance by using rotations. For more details, see Wikipedia.
 '''
 
+
 class Node(object):
     '''Implement node of a tree.'''
 
     def __init__(
-    self, 
-    value, 
-    left = None, 
-    right = None,    
-    height = 1):
+            self,
+            value,
+            left=None,
+            right=None,
+            height=1):
         '''Implements the node of the tree.
         @ Args:
         > value - (int) Value of the node
@@ -59,6 +60,7 @@ class Node(object):
         self.right = right
         self.height = height
 
+
 class AVL_Tree(object):
     '''Implements AVL Tree.'''
 
@@ -71,7 +73,7 @@ class AVL_Tree(object):
         if not node:
             return 0
         return node.height
-    
+
     def getBalanceFactor(self, node):
         '''Returns the balance factor of the AVL Tree.
         @ Args:
@@ -89,7 +91,7 @@ class AVL_Tree(object):
         @ Return:
         > finalNode - (Node) final Node after left rotation
         '''
-        finalNode = node.right # final parent node after rotation
+        finalNode = node.right  # final parent node after rotation
         tempNode = finalNode.left
 
         # Rotate
@@ -151,7 +153,7 @@ class AVL_Tree(object):
         > rootNode = (Node) The root node of the tree with value
                     in it's final position
         '''
-        if not rootNode: return Node(value) # Empty tree
+        if not rootNode: return Node(value)  # Empty tree
 
         # Insert as per BST rules
         if value < rootNode.value:
@@ -163,7 +165,7 @@ class AVL_Tree(object):
         balanceFactor = self.getBalanceFactor(rootNode)
 
         # Perform rotations after insertion
-        if balanceFactor > 1:            
+        if balanceFactor > 1:
             # if below condition is true, we know
             # as per BST rules, value is in left subtree
             # of left subtree of rootNode.
